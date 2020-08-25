@@ -1,0 +1,99 @@
+from netmiko import ConnectHandler
+#from getpass import getpass
+
+SWT_6a = {
+    'device_type': 'cisco_ios',
+    'ip': '172.24.6.6',
+    'username': 'cisco',
+    'password': 'cisco',
+}
+
+SWT_5a = {
+    'device_type': 'cisco_ios',
+    'ip': '172.24.6.5',
+    'username': 'cisco',
+    'password': 'cisco',
+}
+
+SWT_4a = {
+    'device_type': 'cisco_ios',
+    'ip': '172.24.6.4',
+    'username': 'cisco',
+    'password': 'cisco',
+}
+
+
+SWT_3a = {
+    'device_type': 'cisco_ios',
+    'ip': '172.24.6.3',
+    'username': 'cisco',
+    'password': 'cisco',
+}
+
+SWT_2a = {
+    'device_type': 'cisco_ios',
+    'ip': '172.24.6.2',
+    'username': 'cisco',
+    'password': 'cisco',
+}
+
+SWT_Mezanino = {
+    'device_type': 'cisco_ios',
+    'ip': '172.24.6.1',
+    'username': 'cisco',
+    'password': 'cisco',
+}
+
+SWT_Terreo = {
+    'device_type': 'cisco_ios',
+    'ip': '172.24.6.0',
+    'username': 'cisco',
+    'password': 'cisco',
+}
+
+SWT_Nucleo = {
+    'device_type': 'cisco_ios',
+    'ip': '172.24.5.1',
+    'username': 'cisco',
+    'password': 'cisco',
+}
+
+net_connect = ConnectHandler(**SWT_6a)
+config_commands = ['inter po7', 'switchport trunk allowed vlan add 1168', 'end', 'wr']
+output = net_connect.send_config_set(config_commands)
+print (output)
+
+net_connect = ConnectHandler(**SWT_5a)
+config_commands = ['inter po6', 'switchport trunk allowed vlan add 1168', 'end', 'wr']
+output = net_connect.send_config_set(config_commands)
+print (output)
+
+net_connect = ConnectHandler(**SWT_4a)
+config_commands = ['inter po5', 'switchport trunk allowed vlan add 1168', 'end', 'wr']
+output = net_connect.send_config_set(config_commands)
+print (output)
+
+net_connect = ConnectHandler(**SWT_3a)
+config_commands = ['inter po4', 'switchport trunk allowed vlan add 1168', 'end', 'wr']
+output = net_connect.send_config_set(config_commands)
+print (output)
+
+net_connect = ConnectHandler(**SWT_2a)
+config_commands = ['inter po3', 'switchport trunk allowed vlan add 1168', 'end', 'wr']
+output = net_connect.send_config_set(config_commands)
+print (output)
+
+net_connect = ConnectHandler(**SWT_Mezanino)
+config_commands = ['inter po2', 'switchport trunk allowed vlan add 1168', 'end', 'wr']
+output = net_connect.send_config_set(config_commands)
+print (output)
+
+net_connect = ConnectHandler(**SWT_Terreo)
+config_commands = ['inter po1', 'switchport trunk allowed vlan add 1168', 'end', 'wr']
+output = net_connect.send_config_set(config_commands)
+print (output)
+
+net_connect = ConnectHandler(**SWT_Nucleo)
+config_commands = ['vlan 1168' , 'name vlan-1168', 'inter range po1-7, po50', 'switchport trunk allowed vlan add 1168', 'end', 'wr']
+output = net_connect.send_config_set(config_commands)
+print (output)
