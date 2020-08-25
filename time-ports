@@ -1,0 +1,23 @@
+from netmiko import ConnectHandler
+from getpass import getpass
+
+host = input ("Digite Ip Switch: ")
+user = input ("Digite seu usuário: ")
+
+cisco1 = {
+    "device_type": "cisco_ios",
+    "ip": host,
+    "username": user,
+    "password": getpass(),
+}
+
+# Show command that we execute.
+command = "sh int | inc proto.* down|Last in.* [1-99]w"
+
+with ConnectHandler(**cisco1) as net_connect:
+    output = net_connect.send_command(command)
+
+# Automatically cleans-up the output so that only the show output is returned
+print()
+print(output)
+print()
